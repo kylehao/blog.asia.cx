@@ -1,4 +1,11 @@
-# tranquil-theme
+---
+layout: post
+title:  "About Tranquil Theme"
+date:   2017-02-10 12:50:00 +0800
+background: "/images/bg.jpg"
+category: jekyll
+tags: jekyll tranquil-theme feature
+---
 
 [Tranquil theme](https://github.com/swang2015/tranquil-theme) ([demo](http://swang2015.github.io/tranquil-theme/)) is a stylish Jekyll template originally designed for [my blog](http://swang2015.github.io/).
 
@@ -29,7 +36,7 @@
 - add `feature` into tags if you want to show post at homepage slider
 - go to `images/` and place sidebar portrait pic and ads pic
 - if [MathJax](https://www.mathjax.org/) is enabled, use `\[...\]` for displayed mathematics and `\(...\)` for in-line mathematics
-- ADVANCED: if you want to further customize your site, look over [Jekyll](https://jekyllrb.com/docs/home/) to understand how it works, also check [html/css/javascript tutorials](http://www.w3schools.com/) and [liquid language](http://shopify.github.io/liquid/) to learn code.
+- ADVANCED: if you want to further customize your site, check out [Jekyll](https://jekyllrb.com/docs/home/) to understand how it works, also check out [html/css/javascript tutorials](http://www.w3schools.com/) and [liquid language](http://shopify.github.io/liquid/) to learn code.
 
 ### site configurations
 
@@ -37,7 +44,7 @@
 | --- | --- |
 | baseurl | the subpath of the site |
 | paginate | posts per pagination |
-| disqus_forumname | create a site on [disqus](https://disqus.com/) and put the forum name here |
+| disqus_forumname | create a site on disqus and put the forum name here |
 | aboutme | a description about self |
 | ads | ads banner image path |
 
@@ -46,6 +53,6 @@
 | Variable | Description |
 | --- | --- |
 | background | post's feature picture |
-| category | put ONE category for each post |
+| category | put ONE category in each post |
 | tags | a list of tags |
 | math | set `true` or `false` to enable MathJax mathematics |

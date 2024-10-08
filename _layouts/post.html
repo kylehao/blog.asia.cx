@@ -1,41 +1,42 @@
 ---
-# Copyright (c) 2018 Florian Klampfer <https://qwtel.com/>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-layout: base
+layout: default
 ---
+<div class="row">
+	<div class="col-md-9">
+		<article itemscope itemtype="http://schema.org/BlogPosting" class="post-block text-center">
+			<p class="post-category"><a href="/category.html#{{ page.category }}">{{ page.category }}</a></p>
+			<h3 class="post-title" itemprop="name headline">
+				<a href="{{ page.url | prepend: site.baseurl }}" class="inverse-noactive">{{ page.title }}</a>
+				<div class="decorline3"></div>
+			</h3>
 
-{% assign version = jekyll.version | split:'.' %}
-{% assign major = version[0] | plus:0 %}
-{% assign minor = version[1] | plus:0 %}
-{% assign patch = version[2] | plus:0 %}
+			<p class="post-date">
+				<time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time>
+			</p>
 
-{% include_cached components/post.html post=page no_link_title=true no_excerpt=true hide_image=page.hide_image hide_description=page.hide_description %}
+			<div class="post-content" itemprop="articleBody">
+				{{ content }}
+			</div>
 
-{% include components/dingbat.html %}
+			<div class="decorline">
+				<p class="pull-left">{% if page.tags[0] %}
+				<a href="{{ site.baseurl }}/tags"><i class="fa fa-tags tags"></i></a>
+				{% for tag in page.tags %}{% if tag != "feature" %}
+				<a href="{{ site.baseurl }}/tags#{{ tag }}" class="tags">{{ tag }}</a>
+				{% endif %}{% endfor %}
+				{% endif %}</p>
+			</div>
 
-{% assign addons = page.addons | default:site.hydejack.post_addons %}
-{% unless addons %}{% assign addons = "about,newsletter,related,random" | split:"," %}{% endunless %}
-{% for addon in addons %}
-  {% case addon %}
-  {% when 'about' %}
-     {% include_cached components/about.html author=page.author %}
-  {% when 'related' %}
-    {% include if-non-null try="components/related-posts.html" %}
-  {% when 'comments' %}
-    {% include body/comments.html %}
-  {% else %}
-  {% endcase %}
-{% endfor %}
+			{% if site.disqus_forumname %}
+			{% include comments.html %}
+			{% endif %}
+		</article>
+	</div>
+	<div class="col-md-3">
+		<div class="sidebar center-block">
+			{% include widget_blog.html %}
+		</div>
+	</div>
+</div>
+
+
